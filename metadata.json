@@ -1,0 +1,5 @@
+{
+  "name": "HIS Medical Dashboard",
+  "description": "A comprehensive medical dashboard for analyzing hospital information system data, featuring KPI tracking, department analysis, and automated reporting.",
+  "requestFramePermissions": []
+}
