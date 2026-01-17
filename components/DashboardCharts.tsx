@@ -4,7 +4,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, 
   LineChart, Line, PieChart, Pie, Cell, Area, AreaChart, TooltipProps 
 } from 'recharts';
-import { formatCurrency, formatNumber } from '../utils.ts';
+import { formatCurrency, formatNumber } from '../utils';
 
 // --- CONFIGURATION & STYLES ---
 

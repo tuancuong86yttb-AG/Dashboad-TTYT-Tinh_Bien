@@ -9,15 +9,15 @@ import {
     ArrowLeft, Filter
 } from 'lucide-react';
 
-import { MedicalRecord, RawMedicalRecord, FilterState, KPIStats } from './types.ts';
-import { processRawData, calculateKPIs, generateAlerts, formatCurrency, formatNumber } from './utils.ts';
-import FilterBar from './components/FilterBar.tsx';
-import KPICard from './components/KPICard.tsx';
+import { MedicalRecord, RawMedicalRecord, FilterState, KPIStats } from './types';
+import { processRawData, calculateKPIs, generateAlerts, formatCurrency, formatNumber } from './utils';
+import FilterBar from './components/FilterBar';
+import KPICard from './components/KPICard';
 import { 
     CostByTimeLineChart, CostByDeptBarChart, VisitsByDeptBarChart, CostByObjectPieChart, 
     GenericBarChart, GenericLineChart, MultiLineChart, GenericPieChart, RevenueStructureChart
-} from './components/DashboardCharts.tsx';
-import DataTable from './components/DataTable.tsx';
+} from './components/DashboardCharts';
+import DataTable from './components/DataTable';
 
 // Helper functions for date operations without full library dependency
 const parseDateInput = (str: string): Date => {
@@ -179,7 +179,7 @@ const App: React.FC = () => {
     if (inputMode === 'url' && sheetUrl === defaultUrl) {
         handleSheetFetch();
     }
-  }, [inputMode, sheetUrl]);
+  }, []); // Run once on mount
 
   // --- 3. FILTERING LOGIC ---
   const filteredData = useMemo(() => {
@@ -520,7 +520,7 @@ ${alerts.length > 0 ? alerts.map(a => `- [${a.type.toUpperCase()}] ${a.message}:
             <p className="text-slate-500 mb-6">Phân tích dữ liệu Y tế từ File CSV hoặc Google Sheet</p>
             
             {/* Input Toggle */}
-            <div className="flex bg-slate-100 p-1 rounded-lg mb-6 w-full max-sm mx-auto">
+            <div className="flex bg-slate-100 p-1 rounded-lg mb-6 w-full max-w-sm mx-auto">
                 <button 
                     onClick={() => { setInputMode('file'); setError(null); }}
                     className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${inputMode === 'file' ? 'bg-white shadow text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
