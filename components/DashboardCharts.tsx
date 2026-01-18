@@ -38,12 +38,13 @@ const ChartContainer: React.FC<ChartContainerProps> = ({ title, children }) => (
 
 // --- CUSTOM COMPONENTS ---
 
-const CustomTooltip = ({ active, payload, label, formatType = 'number' }: TooltipProps<any, any> & { formatType?: 'currency' | 'number' }) => {
+// Fix: Using 'any' for props to resolve Recharts Tooltip type mismatch issues where 'payload' and 'label' are missing from the intersected type.
+const CustomTooltip = ({ active, payload, label, formatType = 'number' }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-3 border border-slate-100 shadow-xl rounded-lg min-w-[200px] animate-in fade-in zoom-in-95 duration-200 z-50">
         <p className="font-bold text-slate-800 mb-2 pb-2 border-b border-slate-100">{label}</p>
-        {payload.map((entry, index) => (
+        {payload.map((entry: any, index: number) => (
           <div key={index} className="flex items-center justify-between gap-4 py-1">
             <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: entry.color || entry.payload.fill }} />
